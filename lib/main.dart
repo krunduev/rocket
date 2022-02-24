@@ -34,8 +34,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 5));
-    animation = Tween<double>(begin: 0, end: -1000).animate(animationController)
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animation = Tween<double>(begin: 0, end: 200).animate(animationController)
       ..addListener(() {
         setState(() {});
       });
@@ -56,8 +56,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             width: double.infinity,
             height: double.infinity,
             child: Transform.translate(
-              offset: Offset(0, animation.value),
+              offset: Offset(0, -animation.value),
               child: Image.asset('images/rocket.png'),
+            ),
+          ),
+          Center(
+            child: Container(
+              color: Colors.green,
+              width: animation.value,
+              height: animation.value,
             ),
           ),
           Column(
